@@ -121,7 +121,7 @@ export function renderLanding() {
   <dl class="token-card">
     <div class="token-name"><span><dt>NAME</dt><dd>IMMORTAL FRUIT FLIES</dd></span><span class="ticker-cell"><dt>TICKER</dt><dd>$FLIES</dd></span></div>
     <div><dt>PAIRED</dt><dd>GOOGLB</dd></div>
-    <div><dt>CONTRACT</dt><dd><code>0x400000000000000000000000000000000000000</code></dd></div>
+    <div><dt>CONTRACT</dt><dd><code>0x1b96348a12299a5410642f3161a1525977707777</code></dd></div>
     <div><dt>CREATOR TAX</dt><dd>0.6%</dd></div>
     <div><dt>DIVIDEN</dt><dd>0.4%</dd><small>Rewards to Holders</small></div>
   </dl>

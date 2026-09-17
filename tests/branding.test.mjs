@@ -22,7 +22,7 @@ test('token card: deleted items gone, HOLDER→DIVIDEN, NAME left / $FLIES right
   assert.match(home, /class="token-name"/);                        // name|ticker pair row
   assert.match(home, /<dt>NAME<\/dt><dd>IMMORTAL FRUIT FLIES<\/dd>/); // name on the left
   assert.match(home, /<dt>TICKER<\/dt><dd>\$FLIES<\/dd>/);         // $FLIES stays (right)
-  assert.match(home, /<dt>CONTRACT<\/dt><dd><code>0x400000000000000000000000000000000000000<\/code><\/dd>/); // contract row intact
+  assert.match(home, /<dt>CONTRACT<\/dt><dd><code>0x1b96348a12299a5410642f3161a1525977707777<\/code><\/dd>/); // contract row intact
 });
 test('brand and provisional token details are honest across generated pages',()=>{
  const home=renderLanding(),picker=renderPicker(),runner=renderHtml();
@@ -33,7 +33,7 @@ test('brand and provisional token details are honest across generated pages',()=
  }
  assert.match(picker,/SABER4FLIES/);
  assert.match(picker,/fly.*plays/i);
- for(const s of ['id="onchain"','id="disclaimer"','0x400000000000000000000000000000000000000','GOOGL','0.6%','0.4%','$FLIES']) assert.ok(home.includes(s),s);
+ for(const s of ['id="onchain"','id="disclaimer"','0x1b96348a12299a5410642f3161a1525977707777','GOOGL','0.6%','0.4%','$FLIES']) assert.ok(home.includes(s),s);
  assert.doesNotMatch(home,/launched by the fly|own wallet|No token has been issued|1,000,000 \$FLIES|OPEN ON THE LAUNCHPAD/i);
  assert.match(home,/provisional/i);
  assert.match(home,/not financial advice/i);
