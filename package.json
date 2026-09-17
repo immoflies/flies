@@ -1,0 +1,16 @@
+{
+  "name": "fruitflyweb",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Immortal Fruit Fly: a 100-year-old fruit-fly hero dodging fruit-fly predators in a rethemed Subway-Surfers-style three-lane endless runner, controlled by a learned readout on a measured 80-cell MaleCNS connectome circuit. Trained in Node, headless and deterministic.",
+  "scripts": {
+    "train": "node scripts/train.mjs",
+    "benchmark": "node scripts/benchmark.mjs",
+    "build:live": "node scripts/build-live.mjs",
+    "serve": "python3 -m http.server 8137 -d public",
+    "test": "node tests/smoke.test.mjs && node tests/env.test.mjs && node tests/live-controls.test.mjs && node --test tests/panels.test.mjs && node --test tests/runtime.test.mjs && node tests/sprites.test.mjs && node tests/theme-geometry.test.mjs && node tests/anti-jitter.test.mjs && node --test tests/panels-perf.test.mjs && node --test tests/deployment.test.mjs && node --test tests/landing.test.mjs && node --test tests/game-picker.test.mjs",
+    "verify:determinism": "node tests/smoke.test.mjs"
+  },
+  "engines": { "node": ">=22.18.0" }
+}

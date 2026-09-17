@@ -1,0 +1,13 @@
+✔ L saber has a visible cyan halo outside its opaque core (0.659144ms)
+✔ R saber has a visible rose halo outside its opaque core (0.141992ms)
+✔ visual layers do not move the physical blade contact markers (0.898532ms)
+✔ SABER4FLIES names the game and IMMORTAL FRUIT FLIES names the project (0.646319ms)
+✔ presentation retains experimental caveats, attribution and strict blade semantics (0.134271ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 75.128867

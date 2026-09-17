@@ -1,0 +1,503 @@
+{
+  "CFG": {
+    "generations": 60,
+    "candidates": 64,
+    "elites": 8,
+    "courses": 4,
+    "capSeconds": 90,
+    "trainSeed": 20260916,
+    "decisionEvery": 2,
+    "sigmaFloor": 0.07,
+    "sigmaInit": 0.8,
+    "coverageWeight": 1.4,
+    "switchWeight": 0.01
+  },
+  "valSeeds": [
+    1100001,
+    1100002,
+    1100003,
+    1100004
+  ],
+  "log": [
+    {
+      "gen": 0,
+      "bestTrain": 21.5,
+      "champTrain": 21.5,
+      "champVal": 11.18,
+      "champValRun": 13.57,
+      "genVal": 11.18
+    },
+    {
+      "gen": 1,
+      "bestTrain": 20.77,
+      "champTrain": 20.77,
+      "champVal": 11.58,
+      "champValRun": 11.18,
+      "genVal": 11.58
+    },
+    {
+      "gen": 2,
+      "bestTrain": 21.04,
+      "champTrain": 21.04,
+      "champVal": 14.07,
+      "champValRun": 11.58,
+      "genVal": 14.07
+    },
+    {
+      "gen": 3,
+      "bestTrain": 25.61,
+      "champTrain": 25.61,
+      "champVal": 22.28,
+      "champValRun": 14.07,
+      "genVal": 22.28
+    },
+    {
+      "gen": 4,
+      "bestTrain": 28.06,
+      "champTrain": 26.71,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 18.2
+    },
+    {
+      "gen": 5,
+      "bestTrain": 22.39,
+      "champTrain": 16.56,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 21.89
+    },
+    {
+      "gen": 6,
+      "bestTrain": 23.95,
+      "champTrain": 21.5,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 12.06
+    },
+    {
+      "gen": 7,
+      "bestTrain": 25.83,
+      "champTrain": 17.8,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 13.57
+    },
+    {
+      "gen": 8,
+      "bestTrain": 23.19,
+      "champTrain": 20.64,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 10.75
+    },
+    {
+      "gen": 9,
+      "bestTrain": 30.65,
+      "champTrain": 17.52,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 16.85
+    },
+    {
+      "gen": 10,
+      "bestTrain": 25.33,
+      "champTrain": 13.48,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 17.3
+    },
+    {
+      "gen": 11,
+      "bestTrain": 27.21,
+      "champTrain": 25.16,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 20.15
+    },
+    {
+      "gen": 12,
+      "bestTrain": 34.31,
+      "champTrain": 30.7,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 16.18
+    },
+    {
+      "gen": 13,
+      "bestTrain": 23.56,
+      "champTrain": 23.56,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 22.28
+    },
+    {
+      "gen": 14,
+      "bestTrain": 25.38,
+      "champTrain": 15.05,
+      "champVal": 22.28,
+      "champValRun": 22.28,
+      "genVal": 15.29
+    },
+    {
+      "gen": 15,
+      "bestTrain": 42.73,
+      "champTrain": 42.73,
+      "champVal": 31.09,
+      "champValRun": 22.28,
+      "genVal": 31.09
+    },
+    {
+      "gen": 16,
+      "bestTrain": 34.61,
+      "champTrain": 24.32,
+      "champVal": 31.09,
+      "champValRun": 31.09,
+      "genVal": 26.95
+    },
+    {
+      "gen": 17,
+      "bestTrain": 29.37,
+      "champTrain": 17.55,
+      "champVal": 31.09,
+      "champValRun": 31.09,
+      "genVal": 25.04
+    },
+    {
+      "gen": 18,
+      "bestTrain": 34.8,
+      "champTrain": 20.13,
+      "champVal": 31.09,
+      "champValRun": 31.09,
+      "genVal": 30.67
+    },
+    {
+      "gen": 19,
+      "bestTrain": 39.12,
+      "champTrain": 39.12,
+      "champVal": 34.65,
+      "champValRun": 31.09,
+      "genVal": 34.65
+    },
+    {
+      "gen": 20,
+      "bestTrain": 33.45,
+      "champTrain": 29.77,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 26.88
+    },
+    {
+      "gen": 21,
+      "bestTrain": 36.92,
+      "champTrain": 34.15,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.09
+    },
+    {
+      "gen": 22,
+      "bestTrain": 31.04,
+      "champTrain": 26.97,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 27.3
+    },
+    {
+      "gen": 23,
+      "bestTrain": 33.86,
+      "champTrain": 26.5,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.53
+    },
+    {
+      "gen": 24,
+      "bestTrain": 33.6,
+      "champTrain": 28.78,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 25.85
+    },
+    {
+      "gen": 25,
+      "bestTrain": 33.8,
+      "champTrain": 30.33,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 21.84
+    },
+    {
+      "gen": 26,
+      "bestTrain": 25.17,
+      "champTrain": 21.48,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.13
+    },
+    {
+      "gen": 27,
+      "bestTrain": 30.57,
+      "champTrain": 27.96,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.19
+    },
+    {
+      "gen": 28,
+      "bestTrain": 29.67,
+      "champTrain": 21.14,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 23.69
+    },
+    {
+      "gen": 29,
+      "bestTrain": 36.46,
+      "champTrain": 28.79,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 17.75
+    },
+    {
+      "gen": 30,
+      "bestTrain": 36.37,
+      "champTrain": 23.63,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 21.77
+    },
+    {
+      "gen": 31,
+      "bestTrain": 39.86,
+      "champTrain": 25.49,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 16.25
+    },
+    {
+      "gen": 32,
+      "bestTrain": 36.5,
+      "champTrain": 29.27,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 30.89
+    },
+    {
+      "gen": 33,
+      "bestTrain": 39.69,
+      "champTrain": 31.93,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 15.89
+    },
+    {
+      "gen": 34,
+      "bestTrain": 37.28,
+      "champTrain": 35.37,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 31
+    },
+    {
+      "gen": 35,
+      "bestTrain": 43.76,
+      "champTrain": 24.64,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 29.54
+    },
+    {
+      "gen": 36,
+      "bestTrain": 33.08,
+      "champTrain": 25.48,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 31
+    },
+    {
+      "gen": 37,
+      "bestTrain": 41.35,
+      "champTrain": 41.35,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 34.65
+    },
+    {
+      "gen": 38,
+      "bestTrain": 49.29,
+      "champTrain": 45.58,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.54
+    },
+    {
+      "gen": 39,
+      "bestTrain": 35.26,
+      "champTrain": 27.36,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 29.54
+    },
+    {
+      "gen": 40,
+      "bestTrain": 41.4,
+      "champTrain": 33.65,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.54
+    },
+    {
+      "gen": 41,
+      "bestTrain": 29.97,
+      "champTrain": 28.24,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 15.9
+    },
+    {
+      "gen": 42,
+      "bestTrain": 38.87,
+      "champTrain": 32.62,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.19
+    },
+    {
+      "gen": 43,
+      "bestTrain": 31.58,
+      "champTrain": 29.43,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 31
+    },
+    {
+      "gen": 44,
+      "bestTrain": 39.64,
+      "champTrain": 37.84,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.19
+    },
+    {
+      "gen": 45,
+      "bestTrain": 31.55,
+      "champTrain": 24.4,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 19.36
+    },
+    {
+      "gen": 46,
+      "bestTrain": 39.02,
+      "champTrain": 27.16,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.54
+    },
+    {
+      "gen": 47,
+      "bestTrain": 25.01,
+      "champTrain": 16.68,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.19
+    },
+    {
+      "gen": 48,
+      "bestTrain": 43.69,
+      "champTrain": 26.01,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 21.98
+    },
+    {
+      "gen": 49,
+      "bestTrain": 33.6,
+      "champTrain": 23.08,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 29.54
+    },
+    {
+      "gen": 50,
+      "bestTrain": 45.26,
+      "champTrain": 32.44,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.54
+    },
+    {
+      "gen": 51,
+      "bestTrain": 32.96,
+      "champTrain": 30.42,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 29.43
+    },
+    {
+      "gen": 52,
+      "bestTrain": 33.05,
+      "champTrain": 23.54,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.19
+    },
+    {
+      "gen": 53,
+      "bestTrain": 41.48,
+      "champTrain": 30.56,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.16
+    },
+    {
+      "gen": 54,
+      "bestTrain": 34.44,
+      "champTrain": 26.61,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.18
+    },
+    {
+      "gen": 55,
+      "bestTrain": 39.32,
+      "champTrain": 36.38,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.54
+    },
+    {
+      "gen": 56,
+      "bestTrain": 35.93,
+      "champTrain": 29.13,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.19
+    },
+    {
+      "gen": 57,
+      "bestTrain": 36.94,
+      "champTrain": 29.39,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.19
+    },
+    {
+      "gen": 58,
+      "bestTrain": 35.83,
+      "champTrain": 29.67,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 22.19
+    },
+    {
+      "gen": 59,
+      "bestTrain": 38.33,
+      "champTrain": 25.68,
+      "champVal": 34.65,
+      "champValRun": 34.65,
+      "genVal": 29.54
+    }
+  ]
+}

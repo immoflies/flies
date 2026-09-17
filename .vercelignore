@@ -1,0 +1,10 @@
+# Upload exclusions, NOT output selection: public/ is selected by vercel.json.
+# Keep scripts/, src/, vendor/, overlay/ and all public assets for the build.
+.git/
+node_modules/
+.vercel/
+.env
+.env.*
+docs/
+tests/
+*.log

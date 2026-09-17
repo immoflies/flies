@@ -1,0 +1,46 @@
+# Dependencies and local Python environments
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local credentials / environment (keep sanitized templates)
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+.npmrc
+
+# Local deployment state
+.vercel/
+
+# Caches, test output, logs and temporary files
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+*.log
+*.tsbuildinfo
+/tmp/
+/temp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# OS and editor-local files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+
+# Keep public assets, atlas binaries, circuit data, checkpoints,
+# vendor sources, license notices and package lockfiles versioned.
+# Vercel builds from these inputs; do not ignore public/ or *.json.

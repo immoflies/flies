@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>IMMORTAL FRUIT FLIES — live circuit monitor</title>
+<link rel="icon" href="../favicon.png" type="image/png" />
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><h1>IMMORTAL FRUIT FLIES</h1></div>
+  <button id="audio-toggle" class="audio-btn" type="button" aria-pressed="false">SOUND: OFF</button>
+</header>
+
+<div class="kicker">
+  <span class="kicker-title">LIVE MONITOR / 01 · EXPERIMENTAL</span>
+  <span>—</span>
+  <span class="kicker-detail">a 80-cell fly brain drives an endless runner · fixed 60 Hz clock</span>
+</div>
+<nav class="crumb" aria-label="Navigate"><a href="../">← Project home</a> · <a href="../monitor/">Change game</a></nav>
+
+<ul class="legend" aria-label="Hazard legend">
+  <li class="lg jump"><i></i><b>JUMP</b><span>broken road + pond — hop over</span></li>
+  <li class="lg duck"><i></i><b>DUCK</b><span>flying bird — duck under</span></li>
+  <li class="lg dodge"><i></i><b>DODGE</b><span>wooden wall — change lane</span></li>
+</ul>
+
+<main>
+  <div class="workbench">
+    <section class="panel game-panel">
+      <div class="panel-head"><span class="num">01</span><h2>GAME</h2><small>IMMORTAL FRUIT FLIES · 60 Hz sim</small></div>
+      <div class="stage">
+        <canvas id="game" width="520" height="680"></canvas>
+        <div id="overlay" class="game-overlay"><div class="card">
+          <h3 id="overlay-title">READY?</h3>
+          <p id="overlay-text">The trained agent takes the wheel in a moment. Arrows / space / down take over.</p>
+          <button id="start">RUN</button>
+        </div></div>
+      </div>
+      <div class="metrics">
+        <div><span>SCORE</span><strong id="score">0</strong></div>
+        <div><span>TIME</span><strong id="time">0.0</strong></div>
+        <div><span>ACTION</span><strong id="action">RUN</strong></div>
+      </div>
+      <div class="panel-foot"><span>Agent auto-plays · keyboard overrides</span><span class="right" id="status">—</span></div>
+      <!-- hidden controls the unmodified game requires at load -->
+      <div style="display:none">
+        <video id="cam" autoplay></video><canvas id="grab"></canvas><canvas id="pip"></canvas>
+        <button id="mute">mute</button><button id="fs">fullscreen</button>
+        <input id="speed-range" type="range" min="1" max="4" value="2" /><span id="speed-name">2×</span>
+      </div>
+    </section>
+
+    <section class="panel network-panel">
+      <div class="panel-head"><span class="num">02</span><h2>DECISION NETWORK</h2><small>16 → 12 → 5</small></div>
+      <div class="scene"><canvas id="policy-network"></canvas><span class="hint">chosen action ▶</span></div>
+      <div class="panel-foot"><span>Signed readout weights</span><span class="right">green + · orange −</span></div>
+    </section>
+
+    <section class="panel outputs-panel">
+      <div class="panel-head"><span class="num">03</span><h2>KEYBOARD OUTPUT</h2><small>held key</small></div>
+      <div id="keyboard-output"></div>
+      <div class="panel-foot"><span>Largest score → key</span><span class="right">~30 decisions/s</span></div>
+    </section>
+
+    <section class="panel brain-panel">
+      <div class="panel-head"><span class="num">04</span><h2>BRAIN ACTIVITY</h2><small>MaleCNS subset · 2D orthographic</small></div>
+      <div class="scene"><canvas id="brain-scene"></canvas><span class="hint">drag rotate · scroll zoom</span></div>
+      <div class="panel-foot"><span>Simulated activity</span><span class="right">measured connections</span></div>
+    </section>
+  </div>
+</main>
+
+<script src="../audio.js"></script>
+<script src="../live.js"></script>
+<script src="../panels.js"></script>
+</body>
+</html>

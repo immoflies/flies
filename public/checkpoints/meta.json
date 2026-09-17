@@ -1,0 +1,24 @@
+{
+  "trainSeed": 20260916,
+  "CFG": {
+    "generations": 60,
+    "candidates": 64,
+    "elites": 8,
+    "courses": 4,
+    "capSeconds": 90,
+    "trainSeed": 20260916,
+    "decisionEvery": 2,
+    "sigmaFloor": 0.07,
+    "sigmaInit": 0.8,
+    "coverageWeight": 1.4,
+    "switchWeight": 0.01
+  },
+  "paramCount": 269,
+  "valSeeds": [
+    1100001,
+    1100002,
+    1100003,
+    1100004
+  ],
+  "testStart": 2100001
+}

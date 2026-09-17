@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: SABER4FLIES names the game and IMMORTAL FRUIT FLIES names the project
+not ok 1 - SABER4FLIES names the game and IMMORTAL FRUIT FLIES names the project
+  ---
+  duration_ms: 0.867905
+  type: 'test'
+  location: '/home/hermes/fruitflyweb/games/saber/tests/presentation.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /<title>SABER4FLIES ·/. Input:
+    
+    '<!doctype html>\n' +
+      '<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Fruit Fly Saber · Autonomous Flight</title>\n' +
+      '<style>\n' +
+      '*{box-sizing:border-box}body{margin:0;background:#080a09;color:#fff;font:13px/1.5 system-ui,sans-serif}#gl{position:fixed;inset:0;width:100%;height:100%;z-index:-1}header{display:flex;justify-content:space-between;gap:20px;padding:22px 28px;pointer-events:none;background:linear-gradient(#080a09dd,transparent)}h1{font-size:23px;margin:4px 0;letter-spacing:.06em}h1 span{color:#80948e;font-weight:300}.eyebrow,.label,summary{font:11px/1.6 ui-monospace,monospace;letter-spacing:.08em}.eyebrow{color:#8abb97}.brand p{margin:0;color:#9baaa3;font-size:12px}.hud{text-align:right}#score{font:32px ui-monospace,monospace}.counts{display:flex;gap:16px;margin-top:8px}.counts b{font-size:17px}.label{color:#97aaa0}.panels{position:fixed;left:22px;bottom:55px;width:292px;max-height:calc(100dvh - 160px);overflow:auto;display:grid;gap:8px}details{background:#080e0de8;border:1px solid #304637}summary{padding:11px 13px;cursor:pointer;color:#dce9df;user-select:none}summary:hover,summary:focus-visible{background:#234d32}.panel-body{padding:0 13px 13px}.panel-body p{font-size:10px;color:#96aaa0;margin:8px 0 0}canvas#brain,canvas#network{width:100%;display:block;background:#0a1210}#brain{height:60px}#network{height:102px}.scores{display:flex;justify-content:space-between;font:10px ui-monospace,monospace;margin-top:8px}.keys{display:flex;gap:8px}.keys span{border:1px solid #415549;padding:9px;flex:1;text-align:center;font:11px ui-monospace,monospace}.keys .active{background:#234d32;border-color:#8bd29b;color:white}#key-L.active{background:#145966}#key-R.active{background:#773247}#telemetry{position:fixed;right:26px;bottom:65px;text-align:right;pointer-events:none}#action{font:30px ui-monospace,monospace}#last-swing,#feedback{font:10px/1.6 ui-monospace,monospace;color:#a5c1b2}#sound{pointer-events:auto;margin-top:12px;padding:11px 15px;background:#0b160f;color:#d2e3d6;border:1px solid #3d6347;cursor:pointer}.spectator{text-align:center;font:10px ui-monospace,monospace;color:#91a99a;pointer-events:none}#error{color:#ffaaaa;background:#391616}#error:empty{display:none}footer{position:fixed;bottom:0;padding:9px 18px;width:100%;background:#080a09ed;font-size:9px;color:#8da396;text-align:center}a{color:inherit}summary:focus-visible,button:focus-visible{outline:2px solid #8bd29b;outline-offset:2px}\n' +
+      '@media(max-width:700px){header{padding:12px;gap:8px}h1{font-size:17px}.brand p{display:none}#score{font-size:24px}.counts{gap:8px}.counts b{font-size:13px}.label,.eyebrow{font-size:9px}.panels{left:10px;bottom:92px;width:224px;max-height:39dvh}.panel-body p{font-size:9px}summary{padding:8px 10px}#network{height:80px}#brain{height:46px}#telemetry{bottom:32px;right:12px;left:12px;display:flex;align-items:center;justify-content:flex-end;gap:10px}#telemetry>.label,#last-swing{display:none}#action{font-size:16px}#feedback{max-width:95px}#sound{margin:0;padding:8px;font-size:9px}footer{font-size:8px;padding:6px}footer .credit-detail{display:none}}\n' +
+      '</style><link rel="stylesheet" href="integration.css"></head><body>\n' +
+      '<nav class="ff-nav" aria-label="FruitFlyWeb site"><a href="../index.html">Project home</a><span>·</span><a href="../monitor.html">Change game</a><b>Experimental</b></nav>\n' +
+      '<canvas id="gl" aria-label="Third-person fly avatar autonomously slicing fruit across three lanes"></canvas>\n' +
+      '<header><div class="brand"><div class="eyebrow" id="status">LOADING MODEL</div><h1>FRUIT FLY <span>/</span> SABER</h1><p>Three lanes. Two blades. Connectome-driven decisions.</p></div><div class="hud"><div class="label">SESSION SCORE</div><div id="score">000000</div><div class="counts"><span class="label">HITS <b id="hits">0</b></span><span class="label">MISSES <b id="misses">0</b></span></div></div></header>\n' +
+      '<div id="error" role="alert"></div><div class="spectator">SPECTATOR MODE · HUMAN GAMEPLAY DISABLED</div>\n' +
+      '<aside class="panels" aria-label="Collapsible live diagnostics">\n' +
+      '<details open id="decision-panel"><summary>Decision Network</summary><div class="panel-body"><canvas id="network" width="532" height="360" aria-label="Neural features and continuous joint targets"></canvas><p>Lane/color receptors → fixed 80-cell circuit → trained continuous motor map → eight joint angles. No keyboard commands.</p></div></details>\n' +
+      '<details open id="brain-panel"><summary>Brain Activity</summary><div class="panel-body"><canvas id="brain" width="640" height="140"></canvas><p id="activity-summary">Loading</p><p>Modeled MaleCNS subset, evaluated from rest each observation. Not a whole brain or validated muscle simulation.</p></div></details>\n' +
+      '<details open id="motor-panel"><summary>Neural → Joint Motion</summary><div class="panel-body"><pre id="motor-values" style="white-space:pre-wrap;font:10px/1.6 monospace">Loading</pre><p>Joint target → actual angle in radians. Continuous trained motor output, smoothed by joint dynamics. Left blade: cyan only. Right blade: rose only. Hits require physical contact.</p></div></details>\n' +
+      '</aside>\n' +
+      '<section id="telemetry"><div class="label">CONTINUOUS MOTOR CONTROL</div><div id="last-swing">NO SWING YET</div><div id="feedback">LOADING CIRCUIT</div><button id="sound" type="button" aria-pressed="false">SOUND OFF</button></section>\n' +
+      '<footer><a href="ATTRIBUTION.md">Attribution / licenses</a> · <a href="https://github.com/cobanov/fly-connectome-template">Mert Cobanov · fly-connectome-template</a><span class="credit-detail"> · MaleCNS data CC BY 4.0 · Modeled activity, not measured fly behavior</span></footer>\n' +
+      '<script type="module" src="js/game.js"></script></body></html>\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    <!doctype html>
+    <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Fruit Fly Saber · Autonomous Flight</title>
+    <style>
+    *{box-sizing:border-box}body{margin:0;background:#080a09;color:#fff;font:13px/1.5 system-ui,sans-serif}#gl{position:fixed;inset:0;width:100%;height:100%;z-index:-1}header{display:flex;justify-content:space-between;gap:20px;padding:22px 28px;pointer-events:none;background:linear-gradient(#080a09dd,transparent)}h1{font-size:23px;margin:4px 0;letter-spacing:.06em}h1 span{color:#80948e;font-weight:300}.eyebrow,.label,summary{font:11px/1.6 ui-monospace,monospace;letter-spacing:.08em}.eyebrow{color:#8abb97}.brand p{margin:0;color:#9baaa3;font-size:12px}.hud{text-align:right}#score{font:32px ui-monospace,monospace}.counts{display:flex;gap:16px;margin-top:8px}.counts b{font-size:17px}.label{color:#97aaa0}.panels{position:fixed;left:22px;bottom:55px;width:292px;max-height:calc(100dvh - 160px);overflow:auto;display:grid;gap:8px}details{background:#080e0de8;border:1px solid #304637}summary{padding:11px 13px;cursor:pointer;color:#dce9df;user-select:none}summary:hover,summary:focus-visible{background:#234d32}.panel-body{padding:0 13px 13px}.panel-body p{font-size:10px;color:#96aaa0;margin:8px 0 0}canvas#brain,canvas#network{width:100%;display:block;background:#0a1210}#brain{height:60px}#network{height:102px}.scores{display:flex;justify-content:space-between;font:10px ui-monospace,monospace;margin-top:8px}.keys{display:flex;gap:8px}.keys span{border:1px solid #415549;padding:9px;flex:1;text-align:center;font:11px ui-monospace,monospace}.keys .active{background:#234d32;border-color:#8bd29b;color:white}#key-L.active{background:#145966}#key-R.active{background:#773247}#telemetry{position:fixed;right:26px;bottom:65px;text-align:right;pointer-events:none}#action{font:30px ui-monospace,monospace}#last-swing,#feedback{font:10px/1.6 ui-monospace,monospace;color:#a5c1b2}#sound{pointer-events:auto;margin-top:12px;padding:11px 15px;background:#0b160f;color:#d2e3d6;border:1px solid #3d6347;cursor:pointer}.spectator{text-align:center;font:10px ui-monospace,monospace;color:#91a99a;pointer-events:none}#error{color:#ffaaaa;background:#391616}#error:empty{display:none}footer{position:fixed;bottom:0;padding:9px 18px;width:100%;background:#080a09ed;font-size:9px;color:#8da396;text-align:center}a{color:inherit}summary:focus-visible,button:focus-visible{outline:2px solid #8bd29b;outline-offset:2px}
+    @media(max-width:700px){header{padding:12px;gap:8px}h1{font-size:17px}.brand p{display:none}#score{font-size:24px}.counts{gap:8px}.counts b{font-size:13px}.label,.eyebrow{font-size:9px}.panels{left:10px;bottom:92px;width:224px;max-height:39dvh}.panel-body p{font-size:9px}summary{padding:8px 10px}#network{height:80px}#brain{height:46px}#telemetry{bottom:32px;right:12px;left:12px;display:flex;align-items:center;justify-content:flex-end;gap:10px}#telemetry>.label,#last-swing{display:none}#action{font-size:16px}#feedback{max-width:95px}#sound{margin:0;padding:8px;font-size:9px}footer{font-size:8px;padding:6px}footer .credit-detail{display:none}}
+    </style><link rel="stylesheet" href="integration.css"></head><body>
+    <nav class="ff-nav" aria-label="FruitFlyWeb site"><a href="../index.html">Project home</a><span>·</span><a href="../monitor.html">Change game</a><b>Experimental</b></nav>
+    <canvas id="gl" aria-label="Third-person fly avatar autonomously slicing fruit across three lanes"></canvas>
+    <header><div class="brand"><div class="eyebrow" id="status">LOADING MODEL</div><h1>FRUIT FLY <span>/</span> SABER</h1><p>Three lanes. Two blades. Connectome-driven decisions.</p></div><div class="hud"><div class="label">SESSION SCORE</div><div id="score">000000</div><div class="counts"><span class="label">HITS <b id="hits">0</b></span><span class="label">MISSES <b id="misses">0</b></span></div></div></header>
+    <div id="error" role="alert"></div><div class="spectator">SPECTATOR MODE · HUMAN GAMEPLAY DISABLED</div>
+    <aside class="panels" aria-label="Collapsible live diagnostics">
+    <details open id="decision-panel"><summary>Decision Network</summary><div class="panel-body"><canvas id="network" width="532" height="360" aria-label="Neural features and continuous joint targets"></canvas><p>Lane/color receptors → fixed 80-cell circuit → trained continuous motor map → eight joint angles. No keyboard commands.</p></div></details>
+    <details open id="brain-panel"><summary>Brain Activity</summary><div class="panel-body"><canvas id="brain" width="640" height="140"></canvas><p id="activity-summary">Loading</p><p>Modeled MaleCNS subset, evaluated from rest each observation. Not a whole brain or validated muscle simulation.</p></div></details>
+    <details open id="motor-panel"><summary>Neural → Joint Motion</summary><div class="panel-body"><pre id="motor-values" style="white-space:pre-wrap;font:10px/1.6 monospace">Loading</pre><p>Joint target → actual angle in radians. Continuous trained motor output, smoothed by joint dynamics. Left blade: cyan only. Right blade: rose only. Hits require physical contact.</p></div></details>
+    </aside>
+    <section id="telemetry"><div class="label">CONTINUOUS MOTOR CONTROL</div><div id="last-swing">NO SWING YET</div><div id="feedback">LOADING CIRCUIT</div><button id="sound" type="button" aria-pressed="false">SOUND OFF</button></section>
+    <footer><a href="ATTRIBUTION.md">Attribution / licenses</a> · <a href="https://github.com/cobanov/fly-connectome-template">Mert Cobanov · fly-connectome-template</a><span class="credit-detail"> · MaleCNS data CC BY 4.0 · Modeled activity, not measured fly behavior</span></footer>
+    <script type="module" src="js/game.js"></script></body></html>
+    
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///home/hermes/fruitflyweb/games/saber/tests/presentation.test.mjs:7:10)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.start (node:internal/test_runner/test:1262:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: presentation retains experimental caveats, attribution and strict blade semantics
+ok 2 - presentation retains experimental caveats, attribution and strict blade semantics
+  ---
+  duration_ms: 0.121864
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 47.31519

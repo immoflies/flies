@@ -1,0 +1,41 @@
+{
+  "cfg": {
+    "nTest": 100,
+    "testStart": 2100001,
+    "cap": 180,
+    "decisionEvery": 2,
+    "seed": 1
+  },
+  "results": [
+    {
+      "name": "trained readout (connectome)",
+      "completed": 0,
+      "meanElapsed": 17.532,
+      "meanScore": 314.1
+    },
+    {
+      "name": "trained readout, circuit silenced",
+      "completed": 0,
+      "meanElapsed": 9.34,
+      "meanScore": 126.7
+    },
+    {
+      "name": "untrained random readout",
+      "completed": 0,
+      "meanElapsed": 8.128,
+      "meanScore": 101.2
+    },
+    {
+      "name": "idle (NOOP)",
+      "completed": 0,
+      "meanElapsed": 7.607,
+      "meanScore": 90.5
+    },
+    {
+      "name": "uniform random actions",
+      "completed": 0,
+      "meanElapsed": 9.141,
+      "meanScore": 122.5
+    }
+  ]
+}

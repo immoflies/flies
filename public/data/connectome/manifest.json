@@ -1,0 +1,20 @@
+{
+  "dataset": "FlyEM MaleCNS v1.0, min confidence 0.5",
+  "license": "CC BY 4.0",
+  "source": "https://male-cns.janelia.org/download/",
+  "nodes": 80,
+  "edges": 1296,
+  "synapticContacts": 26029,
+  "inputCells": 32,
+  "readoutCells": 16,
+  "bridgeCells": 32,
+  "bridgeBudget": 32,
+  "graphSha256": "1600e2f2c1a73e9e86d2802bb7d48379469aeb0a91b87ced9f3633fe2afb0a3b",
+  "sources": {
+    "annotations": "2177e246113e4cfbf1e7772ec37c6da1955ff22e8063d0b1f833101f99a9a3b2",
+    "edges": "e35da783d1c686b2b58b3b87cd6a403ae43bfcfba8bff28e08ef752c1a56afc1",
+    "neurotransmitters": "95c9289220663abeb3409f3ad9e5a7f8a53f8093f5139d15502cd08da8879621"
+  },
+  "selection": "32 visual cells (4 per each of 8 named types) by direct DN contact rank; union of top-2 DN targets per type, filled to 16 by contact rank; top 32 two-hop bridge cells by minimum incoming/outgoing contact strength; all measured internal directed edges retained. Ties by body ID. Readout selection identical to v1 (no retrain needed). No game outcomes used.",
+  "assumptions": "Engineered input injection; simplified signed, normalized, leaky tanh rate units. Acetylcholine +1, GABA/glutamate -1; unknown/modulatory 0. Not a physiological or whole-brain model."
+}
