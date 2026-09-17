@@ -1,183 +1,80 @@
-# Immortal Fruit Fly
+# IMMORTAL FRUIT FLIES · $FLIES
 
-A 100-year-old fruit fly — the hero — outruns a swarm of fruit-fly predators in an
-open-source, Subway-Surfers-style three-lane endless runner, steered by an AI agent.
-It uses the same recipe as [cobanov/flyjump](https://github.com/cobanov/flyjump):
-a **fixed, measured 80-cell MaleCNS fruit-fly connectome circuit** as a nonlinear
-feature transform, with only a small trainable readout learned by cross-entropy
-method (CEM).
+The fly plays; you watch. Two experimental games put a modeled fruit-fly
+circuit in control, exposing the decisions behind every escape and failure.
 
-The game engine is real and unmodified — it is **Jurassic Runner** from
-`diegopacheco/ai-playground` (Unlicense), vendored verbatim under `vendor/`.
-Its exact Subway Surfers mechanics are intact: three lanes, jump, duck, and
-lane-switching. Only the *sprites and palette* are rethemed (see
-[Theme overlay](#theme-overlay)) — dinosaurs became fruit-fly predators; the physics,
-collisions, and rewards are untouched.
+**FLYINGFLIES** is an endless three-lane runner with a real fruit-fly
+connectome lashed to the controls. A predator fly, banded abdomen and red
+compound eyes, is always one mistake behind you. The hero is a
+100-year-old fruit fly who has spent a lifetime that never ends learning
+one thing: keep the lanes, keep moving. The trained readout survives
+roughly 2.3 times longer than an idle fly and genuinely uses every action
+it has — it turns, jumps and ducks instead of settling on one cowardly
+direction. The benchmark that claims this is an archived control; the
+living page is a fresh checkpoint, and the two are not the same number.
 
-## How it works
+**SABER4FLIES** gives the circuit a different task: cut fruit through
+arm movement — cyan on the left, rose on
+the right, a swing becoming a judgement instead of a painted pixel. It is
+more honest than it is finished: the arms can still drift when idle, and
+right-center reach remains unreliable. An experiment dressed as a toy,
+and it does not pretend otherwise.
 
-```
-8 engineered game observations
-   -> fixed 80-cell MaleCNS circuit (signed, normalized contacts; leaky tanh)
-   -> 16 descending-cell activities
-   -> trained readout (16->12->5)  [269 params, learned via CEM]
-   -> 5 actions: NOOP / LEFT / RIGHT / JUMP / DUCK
-   -> injected into the game's KB input object each decision tick
-```
+Both games boot straight to an autonomous agent. There is no camera, no
+account, no server that must watch. Just a browser, a wiring diagram, and
+a fly deciding.
 
-Headless & deterministic:
-- The game is loaded inside a **lexical platform adapter** (`lib/game-adapter.mjs`):
-  a fake DOM / no-op-2D-context, a **seeded RNG**, and a **fixed performance clock**.
-- Only `update(ts)` runs headlessly (rendering is skipped); the simulation is driven
-  at a fixed 60 Hz with a decision every N ticks.
-- The connectome is an **80-cell graph** (32 visual inputs + 32 bridge interneurons
-  + 16 descending readout cells; 1,296 directed edges, 26,029 contacts) using the
-  MaleCNS v1.0 fruit-fly circuit (FlyEM), following `cobanov/flyjump` (same 32 inputs,
-  same 16 readout cells). It is mined with `scripts/build-connectome-250.py` (adapted
-  from flyjump's builder; checked against the same source SHA-256 digests). Dynamics
-  are the flyjump defaults (3 synchronous iterations, leak 0.7, gain 1.4, output gain 4).
-- The 16 readout cells match the flyjump motif, so the readout architecture is the
-  standard 16->12->5 (269 params). (A larger, 258-cell/10,713-edge variant was also
-  mined and studied — see below — but the 80-cell circuit trains a stronger playing
-  policy, so it is the shipped default.)
+## The brain
 
-## Observations (8 channels)
+The brain is not a metaphor. It is a graph measured from an actual fly:
+32 visual inputs, 32 bridge interneurons, 16 descending command cells,
+**1,296 directed connections carrying 26,029 contacts**, cut from the
+MaleCNS v1.0 connectome (FlyEM / HHMI Janelia and colleagues, CC BY 4.0).
 
-| Ch | Feature | Purpose |
-|----|---------|---------|
-| 0 | proximity of the **in-lane** danger (0..1, 1=about to hit) | timed reactions (jump/duck) |
-| 1 | that danger must be dodged by changing lane | move-obstacle |
-| 2 | danger must be jumped | rock / raptor |
-| 3 | danger must be ducked | pterodactyl |
-| 4 | proximity of the nearest looming move-obstacle (any lane) | pre-position to dodge |
-| 5 | steering offset of that move-threat | which direction gives space |
-| 6 | player jump height | jump/airborne state |
-| 7 | current lane (−1..+1 mapped to 0..1) | lane self-knowledge |
+In the runner, engineered observations pass through a fixed,
+signed, leaky-tanh transform to excite those 16 descending cells, and a
+small trainable readout — **269 parameters, fitted by
+cross-entropy method (CEM) search while the circuit stays fixed** — turns the result into one of five actions:
+NOOP, LEFT, RIGHT, JUMP, DUCK. Saber uses separate motor readouts.
 
-## Reproduce
+No pretense here. The observations are hand-engineered, not pixels. The
+activity is a dimensionless simulated rate, not a recording. What the
+circuit gives you is *structure* — a real wiring diagram doing real work
+inside a toy, and the whole thing runs headless and deterministic, so the
+same seed means the same fly every time.
+
+## Run it
+
+Requires Node.js 22.18+, npm and Python 3 for the static server.
 
 ```sh
-npm test                # smoke + env tests (also verifies determinism)
-# (re)mine the circuit from the full MaleCNS v1.0 source tables
-#  (BRIDGES=32 -> 80-cell shipped default; BRIDGES=210 -> 258-cell experiment):
-#  .venv/bin/python scripts/build-connectome-250.py /path/to/malecns-src 32
-node scripts/train.mjs  # CEM training of the readout (worker-free, in Node)
-node scripts/benchmark.mjs   # 100 held-out-seed evaluation vs control conditions
+npm test             # runner and site regression tests
+npm run build:live   # emit /, /monitor/, /runner/, /saber/
+npm run serve        # http://127.0.0.1:8137 — choose a game to watch
 ```
 
-Training writes results to `public/checkpoints/`, benchmarking to
-`public/benchmarks/`.
-
-## Results
-
-Trained readout (CEM, 60 generations × 64 candidates × 4 courses) on **100 held-out
-seeds** (180 s cap), `decisionEvery=2` (30 Hz):
-
-The following table records the **previous recenter-controller benchmark**, not the current checkpoint.
-
-| Controller | mean survival | mean score | completed / 100 |
-|---|---|---:|---:|
-| **trained readout (80-cell connectome)** | **17.5 s** | **314** | 0 |
-| trained readout, circuit silenced | 9.34 s | 127 | 0 |
-| untrained random readout | 8.13 s | 101 | 0 |
-| idle (NOOP) | 7.61 s | 90 | 0 |
-| uniform random actions | 9.14 s | 122 | 0 |
-
-- The trained agent survives **~2.3×** the idle and ~2× the random baselines, and it
-  genuinely uses **all four actions** — it turns LEFT and RIGHT, jumps, and ducks
-  (an automated test asserts LEFT/RIGHT/JUMP/DUCK on 30 held-out courses).
-- Training fitness = survival **plus a small action-coverage bonus**, so the readout
-  can't settle on a lopsided one-direction strategy: a purely survival-optimized
-  champion hit 30.0 s but never turned left, and forcing balanced left/right/jump/duck
-  behavior costs about half that (see `scripts/train.mjs` / `COVW`).
-- Silencing the circuit collapses the trained policy back toward baseline — a clean
-  control showing the learned behavior **depends on the circuit's activity**, exactly
-  the flyjump result. Note the readout still *runs* when silenced; only the fixed
-  circuit activity is zeroed.
-- A larger **258-cell variant** (210 bridge interneurons, 10,713 edges) was mined and
-  compared: it trains a functional but lower-ceiling policy (13.2 s) and needs ~6.7× more
-  training wall-time. Response-time and 80-vs-258 analyses are archived in `docs/`
-  (`80-vs-258-cell-report.pdf`, `circuit-comparison.png`, `response-time.png`).
-- No run reached the 180 s cap: this task is materially harder than Dino (lane
-  changes + timed jump/duck + obstacles queueing in the same lane at high speed).
-  Earlier hand-written reactive controllers scored around 15–27 s; the current
-  coverage-trained champion does not outperform that entire range.
-
-Validation-fitness (survival + action-coverage bonus) climbed through training to a
-stable plateau (see `public/checkpoints/training.json`). Because every corrective
-action must actually be exercised — the readout is penalized for ignoring LEFT or
-RIGHT — the champion trades raw survival (which pure-survival training pushed to
-30 s by never turning one way) for four-action coverage: 17.532 s mean survival,
-1.88–2.30× the tested baselines. This is not a guarantee of all actions in every run.
-
-## Lane-retention update
-
-The current controller holds its lateral position during NOOP/JUMP/DUCK, observes
-danger in all three lanes, and was retrained with a small steering-reversal penalty.
-LEFT/RIGHT still target the outer lanes; this is position retention, not a discrete
-three-lane selection interface. The vendor source remains unchanged.
-
-On the same 30 seeds (2100001–2100030), `node scripts/replay.mjs` reports
-17.275 s mean survival for the saved legacy system and 22.577 s for the new system
-(+30.7%). Both use LEFT/RIGHT/JUMP/DUCK. Reversals per course are nearly unchanged
-(3.7 versus 3.6); these results do not establish that all visible jitter is gone.
-The replay danger metric is a threshold-based count of steering decisions, not
-a measurement of completed unsafe lane changes. Prior ablation/baseline results
-above have not been rerun for this checkpoint.
-
-`npm run build:live` builds the current UI, controller and fixed-60Hz scheduler.
-`npm test` includes runtime and lane-retention regressions.
-
-## Theme overlay
-
-The vendored `game.js` is **never edited**. `public/theme.js` is concatenated into
-`live.js` by `scripts/build-live.mjs`, so it shares the game's top-level scope and its
-same-named `function` declarations replace the game's sprites:
-
-| Replaced | Was | Is |
-|---|---|---|
-| `drawRunner` | running boy | a 100-year-old fruit fly — silvered abdomen, droopy compound eyes, grey beard tuft, bent antennae, a cane |
-| `drawObstacle` | rock / raptor / ptero / tree / stego | a fruit-fly **predator** (robber-fly: banded abdomen, mandibles, red compound eyes) in three poses — `hover` = jump, `swoop` = duck, `stand` = dodge |
-| `drawChaser` / `drawTrex` | T-Rex | a giant predator fly lunging from the bottom, and the death animation |
-| `drawBackground` / `drawPath` / `drawProp` | jungle / dirt path / ferns | overripe orchard at dusk — cracked earth, gnarled old fruit trees, fallen rotting fruit, dry leaf litter |
-| `crash` | "The T-Rex got you" | "A fruit-fly predator got you" |
-
-The palette moved from jungle-green to an aged amber/bone accent (`.brand`, `.kbkey.on`,
-buttons). Only sprites, backdrop, and copy changed — the trained circuit agent, the
-game loop, and the benchmark results are all identical to the unthemed build.
-
-## Live play
-
-```sh
-npm run build:live && npm run serve
-# open http://127.0.0.1:8137  — the trained agent auto-plays the rendered game
-```
-
-`public/` is a self-contained page: vendored game.js + generated `live.js` with the
-agent + `panels.js`. Keyboard (arrows/space/down) still works to take over.
-
-The page is a four-panel flyjump-style workbench:
-
-- **01 / GAME** — the rendered three-lane runner, auto-played by the agent.
-- **02 / DECISION NETWORK** — live trained readout (16 circuit outputs → 12 hidden →
-  5 actions); green/orange edges are signed contributions, chosen action highlighted.
-- **03 / KEYBOARD OUTPUT** — which key the agent currently holds.
-- **04 / BRAIN ACTIVITY** — the whole-brain MaleCNS atlas (~140k traced somata,
-  optic/central/descending groups) rendered as the visible brain shape, with the
-  80-cell circuit's live activity drawn bright on top within that same volume
-  (drag to rotate, scroll to zoom).
+`npm run train` and `npm run benchmark` re-fit and re-measure the runner readout
+in Node, writing checkpoints and results under `public/`.
 
 ## Honest scope
 
-This demonstrates **numerical learning of a real control policy** and **dependence on
-the connectome circuit's activity**. It does not claim biological-topology superiority;
-the circuit's activity is a simulated, dimensionless rate model, and the game
-observations are engineered, not vision.
+This is a demonstration that a real neural circuit graph can be learned
+against, not a claim of biological superiority. Nothing here is financial,
+tax or legal advice. Every $FLIES token field is provisional and subject
+to change; verify anything on-chain yourself. SABER4FLIES has an
+unresolved motor acceptance gate, and the runner's headline numbers
+belong to an archived control, not the checkpoint on the live page.
 
-## Licenses / attribution
+## Credit
 
-- Game: The Unlicense (`vendor/jurassic-runner/`), prefixed by the original authors' docs.
-- Connectome circuit data: from `cobanov/flyjump` (attribution-required source-available);
-  underlying MaleCNS v1.0 data is CC BY 4.0 (FlyEM / HHMI Janelia + collaborators).
-- All adapter/training/agent code here: your choice of MIT or the flyjump-style terms
-  — **MIT** unless noted otherwise. See `ATTRIBUTION.md`.
+- Built with the [fly-connectome-template](https://github.com/cobanov/fly-connectome-template)
+  by [Mert Cobanov](https://github.com/cobanov) — circuit and atlas data
+  derive from [cobanov/flyjump](https://github.com/cobanov/flyjump).
+- MaleCNS v1.0 soma + edge data: CC BY 4.0, FlyEM / HHMI Janelia,
+  University of Cambridge, MRC Laboratory of Molecular Biology, and
+  Google Research ([male-cns.janelia.org](https://male-cns.janelia.org)).
+- Game engine: Jurassic Runner from
+  [diegopacheco/ai-playground](https://github.com/diegopacheco/ai-playground),
+  vendored under the Unlicense. Theme overlay is original to this project.
+- See [LICENSE](LICENSE), [ATTRIBUTION.md](ATTRIBUTION.md), and
+  [Saber attribution](games/saber/ATTRIBUTION.md) for the applicable terms.

@@ -194,6 +194,30 @@ body.landing { margin: 0; min-height: 100vh; font-family: var(--night-sans); lin
 .disclaimer p { color: var(--night-muted); font-size: 12px; line-height: 1.45; max-width: 90ch; }
 .wordmark { flex-wrap: wrap; letter-spacing: .06em; }
 .picker { padding-bottom: 60px; }
+
+/* Nav social icons */
+.site-header nav .nav-icon { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--night-muted); }
+.site-header nav .nav-icon:hover, .site-header nav .nav-icon:focus-visible { color: var(--night-accent); }
+.nav-icon-svg { width: 16px; height: 16px; fill: currentColor; }
+/* CZ tweet embed */
+.madeit { border-top: 1px solid var(--night-border); border-bottom: 1px solid var(--night-border); display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.7fr); gap: 40px; padding-block: 44px; }
+.madeit h2 { margin: 0; font-family: var(--night-sans); font-size: 40px; letter-spacing: .01em; color: var(--night-ink); }
+.madeit .section-intro p { font-size: 13px; line-height: 1.5; color: var(--night-muted); }
+.tweet-card { margin: 0; border: 1px solid var(--night-border); background: var(--night-surface); padding: 22px 26px; }
+.tweet-head { display: flex; align-items: center; gap: 12px; }
+.tweet-monogram { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--night-border); background: var(--night-elevated); display: inline-flex; align-items: center; justify-content: center; font: 13px var(--night-mono); color: var(--night-muted); }
+.tweet-author strong { display: block; font: 14px var(--night-sans); color: var(--night-ink); }
+.tweet-author span { font: 12px var(--night-mono); color: var(--night-muted); }
+.tweet-card .nav-icon-svg { width: 15px; height: 15px; margin-left: auto; color: var(--night-muted); }
+.tweet-body { margin: 14px 0 0; font: 17px var(--night-sans); line-height: 1.5; color: var(--night-ink); }
+.tweet-body a { color: var(--night-ink); text-decoration: none; }
+.tweet-body a:hover, .tweet-body a:focus-visible { text-decoration: underline; }
+.tweet-src { margin: 10px 0 0; font: 12px var(--night-mono); line-height: 1.6; color: var(--night-muted); overflow-wrap: anywhere; }
+.tweet-src a { color: var(--night-muted); text-decoration: underline; text-underline-offset: 2px; }
+.tweet-meta { margin: 12px 0 0; font: 11px var(--night-mono); color: var(--night-muted); }
+.tweet-meta a { color: var(--night-muted); text-decoration: underline; text-underline-offset: 2px; }
+@media(max-width:700px){ .madeit { grid-template-columns: minmax(0,1fr); } }
+
 @media(max-width: 700px) { .onchain { grid-template-columns: minmax(0,1fr); } }
 /* Final layout and accessibility refinements. */
 .site-header { flex-wrap: wrap; }

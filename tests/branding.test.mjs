@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {renderLanding,renderPicker,renderHtml} from '../scripts/build-live.mjs';
+test('picker brain description and GOOGLB pairing match the requested copy', () => {
+ assert.ok(renderPicker().includes('<p>The fly plays; you watch. Two autonomous agents use a brain from modeled MaleCNS circuit and engineered readouts. Each page runs only itself.</p>'));
+ assert.ok(renderLanding().includes('<div><dt>PAIRED</dt><dd>GOOGLB</dd></div>'));
+});
 test('landing uses the requested title and shortened copy', () => {
  const home = renderLanding();
  assert.equal(home.match(/<title>(.*?)<\/title>/s)[1], 'IMMORTAL FRUIT FLIES · $FLIES');

@@ -259,7 +259,7 @@ export function renderPicker() {
 <nav class="crumb landing-crumb" aria-label="Navigate"><a href="../">← Project home</a></nav>
 <main class="picker shell" id="main">
   <header class="picker-head"><p class="eyebrow">Choose a game</p><h1>Open Monitor</h1>
-  <p>The fly plays; you watch. Two autonomous game agents use a modeled MaleCNS circuit and engineered readouts. Each page runs only itself.</p></header>
+  <p>The fly plays; you watch. Two autonomous agents use a brain from modeled MaleCNS circuit and engineered readouts. Each page runs only itself.</p></header>
   <div class="picker-grid">
     <a class="game-card" href="../runner/" aria-label="Open FLYINGFLIES live monitor">
       <span class="card-tag">GAME 01 · RUNNER · Experimental</span>

@@ -4,6 +4,16 @@ import { readFileSync } from 'node:fs';
 import * as build from '../scripts/build-live.mjs';
 const read = p => readFileSync(new URL('../' + p, import.meta.url), 'utf8');
 
+test('repo + X nav links and the CZ tweet embed are present', () => {
+  const html = build.renderLanding();
+  for (const s of ['https://github.com/immoflies/flies', 'https://x.com/immoflies',
+                   'https://x.com/cz_binance/status/2099713592903995839', 'WE MADE IT!']) {
+    assert.ok(html.includes(s), s);
+  }
+  assert.match(html, /aria-label="GitHub"/, 'GitHub icon link');
+  assert.match(html, /aria-label="X \(@immoflies\)"/, 'X icon link');
+  assert.match(html, /blockquote class="tweet-card"[^>]*cite="https:\/\/x\.com\/cz_binance\/status\/2099713592903995839"/, 'tweet is linked to the post');
+});
 test('homepage teaches the project and links to the preserved monitor', () => {
   assert.equal(typeof build.renderLanding, 'function');
   const html = build.renderLanding();
