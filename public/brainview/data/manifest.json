@@ -1,0 +1,58 @@
+{
+  "dataset": "male-cns:v1.0 annotations + soma cloud",
+  "count": 140024,
+  "coordinateUnits": "8 nm voxels, native MaleCNS EM space",
+  "byteOrder": "little-endian",
+  "displayTransform": "Same as fruitflyweb brain atlas: (x, y, z) -> (x, -y, -z); bounding-box centering; uniform scale 5/max(axis extents).",
+  "files": {
+    "positions": "positions.bin",
+    "groups": "groups.bin",
+    "ids": "ids.bin",
+    "metaOffsets": "meta.bin",
+    "strings": "strings.bin"
+  },
+  "stringsFormat": "length-prefixed UTF-8; format 'type|instance|superclass|subclass|side|status'",
+  "stringCount": 26160,
+  "unmatchedSomas": 0,
+  "source": "https://male-cns.janelia.org/download/",
+  "sourceFile": "flat-connectome/body-annotations-male-cns-v1.0-minconf-0.5.feather",
+  "license": "CC BY 4.0",
+  "attribution": "FlyEM / HHMI Janelia, University of Cambridge, MRC Laboratory of Molecular Biology, and Google Research",
+  "groups": [
+    {
+      "id": 0,
+      "key": "optic",
+      "label": "Optic",
+      "color": "#81b5c8",
+      "count": 90807
+    },
+    {
+      "id": 1,
+      "key": "central",
+      "label": "Central",
+      "color": "#cfcac0",
+      "count": 32170
+    },
+    {
+      "id": 2,
+      "key": "descending",
+      "label": "Descending",
+      "color": "#dfb672",
+      "count": 1312
+    },
+    {
+      "id": 3,
+      "key": "vnc",
+      "label": "VNC",
+      "color": "#af9bc3",
+      "count": 15362
+    },
+    {
+      "id": 4,
+      "key": "other",
+      "label": "Other",
+      "color": "#6c7777",
+      "count": 373
+    }
+  ]
+}

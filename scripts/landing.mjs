@@ -25,6 +25,16 @@ export function renderLanding() {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
 <meta name="description" content="IMMORTAL FRUIT FLIES \u00b7 $FLIES \u2014 two browser games played by connectome-driven fly agents. Connectome wiring, learned readouts, and the reflex science behind the toys.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IMMORTAL FRUIT FLIES · $FLIES">
+<meta property="og:title" content="IMMORTAL FRUIT FLIES · $FLIES">
+<meta property="og:description" content="Fruit Fly Brain Experiment! — Games played by connectome-driven fruit-fly agents — plus BRAINVIEW, the whole MaleCNS brain in 3D">
+<meta property="og:url" content="https://immoflies.com/">
+<meta property="og:image" content="https://immoflies.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IMMORTAL FRUIT FLIES · $FLIES">
+<meta name="twitter:description" content="Fruit Fly Brain Experiment! — Games played by connectome-driven fruit-fly agents — plus BRAINVIEW, the whole MaleCNS brain in 3D">
+<meta name="twitter:image" content="https://immoflies.com/og.png">
 <title>IMMORTAL FRUIT FLIES \u00b7 $FLIES</title>
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="stylesheet" href="landing.css">
@@ -40,7 +50,7 @@ export function renderLanding() {
   <div class="hero-copy">
     <h1 id="hero-title">Small circuit.<br>Real connections.<br><span>Learned decisions.</span></h1>
     <p class="hero-description">Two browser games are played by connectome-driven fly agents. You watch the modeled circuit choose its actions. FLYINGFLIES dodges looming threats in an endless three-lane runner; SABER4FLIES slices fruit by measured joint motion. Real connectome data shapes the signal; task-specific readouts turn it into game actions.</p>
-    <div class="hero-actions"><a class="button primary" href="monitor/">Choose a game <span aria-hidden="true">↗</span></a><a class="text-link" href="#method">Read the experiment <span aria-hidden="true">↓</span></a></div>
+    <div class="hero-actions"><a class="button primary" href="monitor/">Choose a game <span aria-hidden="true">↗</span></a><a class="button" href="brainview/">BRAINVIEW <span aria-hidden="true">↗</span></a><a class="text-link" href="#method">Read the experiment <span aria-hidden="true">↓</span></a></div>
     <p class="hero-note">Drosophila melanogaster \u00b7 MaleCNS v1.0 subset<br>Runs in your browser. No camera or account required.<br>$FLIES \u00b7 token details are provisional.</p>
   </div>
   <figure class="circuit-figure" id="circuit">

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="BRAINVIEW · whole MaleCNS fruit-fly brain — 140,024 traced neurons, rotatable, zoomable down to a single soma, every neuron identified by body ID from the v1.0 connectome annotations.">
+<title>BRAINVIEW · $FLIES</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="BRAINVIEW · IMMORTAL FRUIT FLIES $FLIES">
+<meta property="og:description" content="The whole MaleCNS fruit-fly brain in 3D: 140,024 traced neurons, rotatable, zoomable down to a single identified soma — with a fly body and an 80-cell circuit overlay.">
+<meta property="og:url" content="https://immoflies.com/brainview/">
+<meta property="og:image" content="https://immoflies.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BRAINVIEW · IMMORTAL FRUIT FLIES $FLIES">
+<meta name="twitter:description" content="The whole MaleCNS fruit-fly brain in 3D: 140,024 traced neurons, rotatable, zoomable down to a single identified soma — with a fly body and an 80-cell circuit overlay.">
+<meta name="twitter:image" content="https://immoflies.com/og.png">
+<link rel="icon" href="../favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="wordmark" href="./" aria-label="BRAINVIEW home"><span class="brand-mark" aria-hidden="true">$FLIES</span> BRAIN&nbsp;VIEW</a>
+  <a class="nav-launch home-link" href="../">← Project home</a>
+  <span class="status-dot" id="statusDot" aria-hidden="true"></span>
+  <span class="status" id="status">loading connectome…</span>
+  <nav aria-label="Controls summary">
+    <a class="nav-launch" href="#viewer" data-action="reset">Reset camera</a>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="viewer" id="viewer">
+    <canvas id="gl" aria-label="3D fruit-fly brain viewer. Rotate by dragging, zoom with the wheel, click a neuron to inspect it."></canvas>
+    <div class="hud" id="hud">
+      <div class="hud-row"><span>drag</span> rotate · </div>
+      <div class="hud-row"><span>wheel</span> zoom · </div>
+      <div class="hud-row"><span>right-drag</span> pan · </div>
+      <div class="hud-row"><span>click</span> inspect neuron</div>
+    </div>
+
+    <div class="pick-panel hidden" id="pickPanel" aria-live="polite">
+      <button class="pick-close" id="pickClose" aria-label="Close neuron panel">×</button>
+      <h2 id="pickTitle">Neuron</h2>
+      <dl class="pick-grid">
+        <div><dt>Body ID</dt><dd id="pickId">—</dd></div>
+        <div><dt>Type</dt><dd id="pickType">—</dd></div>
+        <div><dt>Superclass</dt><dd id="pickSuper">—</dd></div>
+        <div><dt>Subclass</dt><dd id="pickSub">—</dd></div>
+        <div><dt>Side</dt><dd id="pickSide">—</dd></div>
+        <div><dt>Group</dt><dd id="pickGroup">—</dd></div>
+        <div class="span"><dt>Position (8&nbsp;nm voxels)</dt><dd id="pickPos" class="mono">—</dd></div>
+        <div class="span"><dt>Status</dt><dd id="pickStatus">—</dd></div>
+      </dl>
+    </div>
+
+    <aside class="dock" id="dock">
+      <div class="dock-head">
+        <span>BRAINVIEW</span>
+        <button class="dock-min" id="dockMin" aria-label="Minimize panel" aria-expanded="true">–</button>
+      </div>
+      <div class="dock-body" id="dockBody">
+        <div class="panel">
+          <h3>Search</h3>
+          <input id="search" type="text" autocomplete="off" spellcheck="false"
+            placeholder="type, instance or body ID… e.g. DNp01, PVLP / 10010">
+          <ul class="results" id="results"></ul>
+        </div>
+
+        <div class="panel">
+          <h3>Layers</h3>
+          <label class="check"><input type="checkbox" id="lg-all" checked> <em>all</em><b id="n-all"></b></label>
+          <label class="check"><input type="checkbox" id="lg-0" checked> <i class="sw sw-optic"></i> optic <b id="n-0"></b></label>
+          <label class="check"><input type="checkbox" id="lg-1" checked> <i class="sw sw-central"></i> central <b id="n-1"></b></label>
+          <label class="check"><input type="checkbox" id="lg-2" checked> <i class="sw sw-desc"></i> descending <b id="n-2"></b></label>
+          <label class="check"><input type="checkbox" id="lg-3" checked> <i class="sw sw-vnc"></i> VNC <b id="n-3"></b></label>
+          <label class="check"><input type="checkbox" id="lg-4" checked> <i class="sw sw-other"></i> other <b id="n-4"></b></label>
+          <label class="check"><input type="checkbox" id="lg-circuit" checked> <i class="sw sw-circuit"></i> 80-cell circuit <b id="n-circuit"></b></label>
+          <label class="check"><input type="checkbox" id="lg-fly" checked> <i class="sw sw-fly"></i> fly body <b>ghost</b></label>
+        </div>
+
+        <div class="panel">
+          <h3>Neurons</h3>
+          <div class="stat"><b id="statShown">—</b><span>shown of <b id="statTotal">—</b></span></div>
+          <div class="stat"><b id="statPts">—</b><span>points / frame</span></div>
+          <div id="prog" class="prog"><i></i></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script src="app.js" type="module"></script>
+</body>
+</html>

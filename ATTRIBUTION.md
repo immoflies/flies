@@ -55,3 +55,17 @@ The Canvas renderer follows the upstream BrainScene orthographic-fit approach.
 It displays 124,289 optic/central/descending somata from 140,024 atlas entries;
 VNC-associated and unclassified entries are excluded. This is soma anatomy, not
 a complete brain surface or measured activity; only 80 circuit cells are modeled.
+
+## 5. Fruit-fly body model (from TuragaLab/flybody)
+
+The 3D fly body rendered in `/brainview/` (`public/brainview/data/flybody.bin`)
+is derived from the MuJoCo fruit-fly body model meshes of
+[TuragaLab/flybody](https://github.com/TuragaLab/flybody) — an anatomically
+detailed *Drosophila melanogaster* model developed by Google DeepMind and
+HHMI Janelia Research Campus (Vaxenburg et al., "Whole-body simulation of
+realistic fruit fly locomotion with deep reinforcement learning").
+Licensed **GPL-3.0**; this project is accordingly distributed under GPL-3.0-or-later
+compatible terms for this component. The meshes were posed at the model's default
+joint state, re-aligned to the MaleCNS atlas space, decimated and re-encoded
+(see the build script noted in `public/brainview/app.js`). No original mesh
+assets are redistributed unmodified.

@@ -278,6 +278,7 @@ export function renderPicker() {
 
 if (isMain) {
   copyFileSync(join(ROOT, "assets/favicon.png"), join(ROOT, "public/favicon.png"));
+  copyFileSync(join(ROOT, "assets/og.png"), join(ROOT, "public/og.png"));
   const live = assembleLive();
   mkdirSync(join(ROOT, "public"), { recursive: true });
   writeFileSync(join(ROOT, "public/live.js"), live);
@@ -287,6 +288,15 @@ if (isMain) {
   writeFileSync(join(ROOT, "public/monitor/index.html"), renderPicker());
   writeFileSync(join(ROOT, "public/runner/index.html"), html);
   cpSync(join(ROOT, "games/saber"), join(ROOT, "public/saber"), { recursive: true });
+  // BRAINVIEW: vendored from the sibling brainview project (independent, uncommitted there)
+  const bvSrc = join(ROOT, "..", "brainview", "public");
+  if (existsSync(bvSrc)) {
+    mkdirSync(join(ROOT, "public/brainview/data"), { recursive: true });
+    for (const f of ["index.html", "app.js", "style.css", "data/flybody.bin", "data/circuit.json",
+      "data/groups.bin", "data/ids.bin", "data/manifest.json", "data/meta.bin", "data/positions.bin", "data/strings.bin"])
+      copyFileSync(join(bvSrc, f), join(ROOT, "public/brainview", f));
+          console.log("brainview vendored -> public/brainview/");
+  }
   writeFileSync(join(ROOT, "public/index.html"), renderLanding());
   // extensionless routing: keep tiny redirect stubs at the old .html paths so
   // any stale link/bookmark still resolves instead of 404-ing.

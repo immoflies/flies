@@ -1,0 +1,119 @@
+/* BRAINVIEW — Night theme, carried over from fruitflyweb's landing.css.
+ * Flat and boxy: near-black surface, warm-white ink, restrained dark-green accent.
+ * Fullscreen layout: the brain IS the page; controls float on the right.
+ */
+:root {
+  --night-bg: #080a09;
+  --night-surface: #0d100d;
+  --night-elevated: #12160f;
+  --night-border: #1d2a1c;
+  --night-ink: #ffffff;
+  --night-muted: #9aa68f;
+  --night-faint: #5e6b58;
+  --night-accent: #3d7a45;
+  --night-accent-ink: #bfe0b0;
+  --night-mono: "Cascadia Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --night-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --circuit-green: #43d17e;
+  --circuit-neg: #d2d2d2;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: var(--night-bg); color: var(--night-ink); font-family: var(--night-sans); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--night-accent); outline-offset: 3px; }
+
+/* ---------- header (slim) ---------- */
+.site-header { display: flex; align-items: center; gap: 14px; padding: 10px 18px; border-bottom: 1px solid var(--night-border); height: 52px; }
+.wordmark { display: inline-flex; align-items: center; gap: 8px; font-family: var(--night-mono); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--night-ink); text-decoration: none; white-space: nowrap; }
+.brand-mark { color: var(--night-accent); }
+.status-dot { width: 8px; height: 8px; background: var(--night-faint); flex: none; }
+.status-dot.ok { background: var(--night-accent); }
+.status-dot.err { background: #b3403a; }
+.status { font-family: var(--night-mono); font-size: 11px; color: var(--night-muted); white-space: nowrap; }
+.site-header nav { display: flex; gap: 8px; margin-left: auto; }
+.home-link { margin-right: 2px; }
+.nav-launch { border: 1px solid var(--night-accent); background: transparent; color: var(--night-ink); font-family: var(--night-mono); font-size: 12px; padding: 6px 12px; min-height: 34px; display: inline-flex; align-items: center; text-decoration: none; }
+.nav-launch:hover, .nav-launch:focus-visible { background: var(--night-accent); }
+
+/* ---------- fullscreen viewer ---------- */
+#main { height: calc(100% - 52px); }
+.viewer { position: relative; width: 100%; height: 100%;
+  background: radial-gradient(ellipse 90% 80% at 50% 42%, #101810 0%, #0a0e0a 42%, #040604 78%, #020302 100%); }
+#gl { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+#gl.dragging { cursor: grabbing; }
+
+.hud { position: absolute; left: 12px; bottom: 12px; display: flex; flex-wrap: wrap; gap: 4px 10px; padding: 6px 10px; border: 1px solid var(--night-border); background: rgba(8, 10, 9, .8); font-family: var(--night-mono); font-size: 10px; color: var(--night-muted); pointer-events: none; }
+.hud-row span { color: var(--night-accent-ink); }
+
+/* ---------- pick panel (top-left; dock owns the right) ---------- */
+.pick-panel { position: absolute; left: 12px; top: 12px; width: min(320px, calc(100% - 24px)); border: 1px solid var(--night-border); background: rgba(13, 16, 13, .94); padding: 12px 14px; }
+.pick-panel.hidden { display: none; }
+.pick-panel h2 { margin: 0 30px 10px 0; font-family: var(--night-mono); font-size: 14px; font-weight: 700; color: var(--night-accent-ink); overflow-wrap: anywhere; }
+.pick-close { position: absolute; right: 6px; top: 4px; width: 26px; height: 26px; border: 0; background: transparent; color: var(--night-muted); font-size: 18px; cursor: pointer; }
+.pick-close:hover { color: var(--night-ink); }
+.pick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin: 0; }
+.pick-grid .span { grid-column: 1 / -1; }
+.pick-grid dt { font-family: var(--night-mono); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--night-faint); }
+.pick-grid dd { margin: 2px 0 0; font-size: 12px; color: var(--night-ink); overflow-wrap: anywhere; }
+.pick-grid dd.mono { font-family: var(--night-mono); font-size: 11px; color: var(--night-muted); }
+
+/* ---------- floating dock (right side, minimize-able) ---------- */
+.dock { position: absolute; right: 12px; top: 12px; width: 272px; max-width: calc(100% - 24px);
+  max-height: calc(100% - 24px); display: flex; flex-direction: column;
+  border: 1px solid var(--night-border); background: rgba(13, 16, 13, .92); }
+.dock-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; border-bottom: 1px solid var(--night-border);
+  font-family: var(--night-mono); font-size: 10px; font-weight: 700; letter-spacing: .14em; color: var(--night-accent-ink); }
+.dock-min { width: 24px; height: 24px; border: 1px solid var(--night-border); background: transparent; color: var(--night-muted);
+  font-family: var(--night-mono); font-size: 14px; line-height: 1; cursor: pointer; }
+.dock-min:hover { color: var(--night-ink); border-color: var(--night-accent); }
+.dock-body { overflow-y: auto; padding: 10px; display: grid; gap: 10px; }
+.dock.min .dock-body { display: none; }
+
+.panel { border: 1px solid var(--night-border); background: var(--night-surface); padding: 10px 12px; }
+.panel h3 { margin: 0 0 8px; font-family: var(--night-mono); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--night-muted); }
+#search { width: 100%; padding: 8px 10px; border: 1px solid var(--night-border); background: var(--night-bg); color: var(--night-ink); font-family: var(--night-mono); font-size: 12px; }
+#search::placeholder { color: var(--night-faint); }
+#search:focus { outline: 2px solid var(--night-accent); outline-offset: 0; }
+.results { list-style: none; margin: 8px 0 0; padding: 0; max-height: 200px; overflow-y: auto; }
+.results li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 6px 8px; border: 1px solid transparent; font-family: var(--night-mono); font-size: 11px; color: var(--night-muted); cursor: pointer; }
+.results li:hover, .results li:focus-visible { border-color: var(--night-accent); color: var(--night-ink); background: var(--night-elevated); }
+.results li b { color: var(--night-ink); font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.results li span { color: var(--night-faint); }
+
+.check { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-family: var(--night-mono); font-size: 12px; color: var(--night-muted); cursor: pointer; }
+.check input { accent-color: var(--night-accent); }
+.check em { font-style: normal; color: var(--night-ink); }
+.check b { margin-left: auto; font-weight: 400; font-size: 10px; color: var(--night-faint); }
+.check:hover { color: var(--night-ink); }
+
+.stat { display: flex; align-items: baseline; gap: 8px; padding: 3px 0; font-family: var(--night-mono); }
+.stat b { font-size: 14px; color: var(--night-ink); }
+.stat span { font-size: 10px; color: var(--night-muted); }
+.prog { height: 6px; border: 1px solid var(--night-border); background: var(--night-bg); margin-top: 8px; }
+.prog i { display: block; height: 100%; width: 0%; background: var(--night-accent); transition: width .2s; }
+
+.legend div { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-family: var(--night-mono); font-size: 11px; color: var(--night-muted); }
+.dock-foot { padding: 4px 2px 0; font-family: var(--night-mono); font-size: 9px; line-height: 1.6; color: var(--night-faint); }
+.dock-foot a { color: var(--night-muted); }
+
+.sw { width: 10px; height: 10px; display: inline-block; flex: none; }
+.sw-optic { background: #81b5c8; }
+.sw-central { background: #cfcac0; }
+.sw-desc { background: #dfb672; }
+.sw-vnc { background: #af9bc3; }
+.sw-other { background: #6c7777; }
+.sw-circuit { background: #ff5040; }
+.sw-fly { background: #9aa68f; }
+.sw-exc { background: #ff5040; }
+.sw-inh { background: #9e2c20; }
+.sw-unk { background: #4a5550; }
+
+@media (max-width: 640px) {
+  .site-header { gap: 8px; padding: 8px 12px; }
+  .site-header nav { display: none; }
+  /* dock becomes a bottom sheet so the brain stays the hero */
+  .dock { top: auto; bottom: 12px; left: 12px; right: 12px; width: auto; max-height: 46%; }
+  .dock-body { max-height: 40vh; }
+  .hud { bottom: auto; top: 12px; left: 12px; }
+  .pick-panel { top: 44px; }
+}
